@@ -1,0 +1,43 @@
+﻿@page
+@model HomeTransactionsManagerWebAppRazor.Pages.Transactions.TransactionsGraphicalVisualizationModel
+@{
+}
+
+<div class="container p-3">
+    <div class="row">
+        <div class="col-3">
+            <h2 class="text-info">GraphicalVisualization</h2>
+        </div>
+        <div class="col-3 offset-6">
+            <a asp-page="/Transactions/Index" class="btn btn-success w-100">Home</a>
+        </div>
+    </div>
+    @*Calendar*@
+    <table class="table-bordered col-12">
+        <thead>
+            <tr>
+                <th>
+                    <label>Sunday</label>
+                </th>
+                <th>
+                    <label>Monday</label>
+                </th>
+                <th>
+                    <label>Tuesday</label>
+                </th>
+                <th>
+                    <label>Wednesday</label>
+                </th>
+                <th>
+                    <label>Thursday</label>
+                </th>
+                <th>
+                    <label>Friday</label>
+                </th>
+                <th>
+                    <label>Saturday</label>
+                </th>
+            </tr>
+        </thead>
+    </table>
+</div>

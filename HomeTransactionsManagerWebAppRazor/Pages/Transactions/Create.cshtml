@@ -1,0 +1,69 @@
+﻿@page
+@model HomeTransactionsManagerWebAppRazor.Pages.Transactions.CreateModel
+@{
+}
+
+<div class="container p-3">
+    <div class="row">
+        <div class="col-9">
+            <h2 class="text-info">Create Transaction</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form method="post" class="container border p-3">
+                <div class="row">
+                    <div class="col-4">
+                        <label asp-for="People.FirstOrDefault().Name"></label>
+                    </div>
+                    <div class="col-8">
+                        <select class="form-control" asp-for="Transaction.PeopleFK">
+                            @{
+                                if (Model.People.Count() > 0)
+                                {
+                                    foreach (var p in Model.People)
+                                    {
+                                        <option value="@p.Id">@p.Name</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="row">
+                    <div class="col-4">
+                        <label asp-for="Transaction.Amount"></label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" asp-for="Transaction.Amount" class="form-control" />
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="row">
+                    <div class="col-4">
+                        <label asp-for="Transaction.Date"></label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" asp-for="Transaction.Date" class="form-control" value="@DateTime.Now" readonly/>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="row">
+                    <div class=" offset-4 col-4">
+                        <a asp-page="/Transactions/Index" class="btn btn-danger w-100">Abort</a>
+                    </div>
+                    <div class="col-4">
+                        <input type="submit" class="btn btn-success w-100" value="Submit"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

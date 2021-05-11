@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace HomeTransactionsManagerWebAppRazor.Pages.Transactions
+namespace HomeTransactionsManagerWebAppRazor.Pages
 {
     public class CreateModel : PageModel
     {
@@ -54,7 +54,7 @@ namespace HomeTransactionsManagerWebAppRazor.Pages.Transactions
             }
             else
             {
-                return RedirectToPage("/Transactions/Create");
+                return RedirectToPage("Create");
             }
         }
     }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace HomeTransactionsManagerWebAppRazor.Pages.Transactions
+namespace HomeTransactionsManagerWebAppRazor.Pages
 {
     public class TransactionsGraphicalVisualizationModel : PageModel
     {

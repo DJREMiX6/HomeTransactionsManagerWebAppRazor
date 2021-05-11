@@ -1,0 +1,61 @@
+﻿@page
+@model HomeTransactionsManagerWebAppRazor.Pages.TransactionsGraphicalVisualizationModel
+@{
+}
+
+<div class="container p-3">
+    <div class="row">
+        <div class="col-4">
+            <h2 class="text-info">Graphical Visualization</h2>
+        </div>
+        <div class="col-3 offset-5">
+            <a asp-page="/Index" class="btn btn-success w-100">Home</a>
+        </div>
+    </div>
+    <div class="row border m-0 p-3">
+        <div class="col-1 offset-1">
+            <button class="btn btn-success w-100 rounded-lg" id="month-prev"><</button>
+        </div>
+        <div class="col-8 text-center">
+            <h5 class="text-light w-100" id="month-name">May</h5>
+        </div>
+        <div class="col-1">
+            <button class="btn btn-success w-100 rounded-lg" id="month-next">></button>
+        </div>
+    </div>
+    @*Calendar*@
+    <table class="table-bordered col-12" id="calendar-table">
+        <thead>
+            <tr>
+                <th>
+                    <label class="text-center w-100">Sunday</label>
+                </th>
+                <th>
+                    <label class="text-center w-100">Monday</label>
+                </th>
+                <th>
+                    <label class="text-center w-100">Tuesday</label>
+                </th>
+                <th>
+                    <label class="text-center w-100">Wednesday</label>
+                </th>
+                <th>
+                    <label class="text-center w-100">Thursday</label>
+                </th>
+                <th>
+                    <label class="text-center w-100">Friday</label>
+                </th>
+                <th>
+                    <label class="text-center w-100">Saturday</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody id="calendar-body">
+
+        </tbody>
+    </table>
+</div>
+
+@section Scripts{
+    <script src="~/js/calendar.js"></script>
+}

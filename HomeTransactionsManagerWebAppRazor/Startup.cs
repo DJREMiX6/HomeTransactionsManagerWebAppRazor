@@ -1,6 +1,7 @@
 using HomeTransactionsManagerWebAppRazor.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,10 +20,16 @@ namespace HomeTransactionsManagerWebAppRazor
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = configuration; 
         }
 
         public IConfiguration Configuration { get; }
+
+        public void OpenBrowser(string url)
+        {
+            //RUN CHROME
+            Process.Start("cmd", $"/C start {url}");
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -29,11 +38,15 @@ namespace HomeTransactionsManagerWebAppRazor
             if(Configuration.GetValue<bool>("Development") == true)
             {
                 services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevelopmentConnection")));
+                //OpenBrowser(Configuration.GetSection("NetworkEnvironment").GetSection("Development").GetSection("Urls").GetSection("Https").Value);
             }
             else
             {
                 services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                //OpenBrowser(Configuration.GetSection("NetworkEnvironment").GetSection("Production").GetSection("Urls").GetSection("Https").Value);
             }
+            services.AddControllersWithViews();
+            services.AddSingleton<IConfiguration>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +72,7 @@ namespace HomeTransactionsManagerWebAppRazor
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
         }

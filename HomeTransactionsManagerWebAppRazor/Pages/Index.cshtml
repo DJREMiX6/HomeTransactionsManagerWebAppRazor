@@ -16,41 +16,19 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12 border text-center">
-            <h4 class="text-warning">Petty Cash: €@Model.Transactions.Sum(x => x.Amount)</h4>
+        <div class="col-12 text-center p-3">
+            <h4 class="text-warning font-weight-bold">Petty Cash: €@Model.Transactions.Sum(x => x.Amount)</h4>
         </div>
     </div>
-    <div class="row"><table class="table table-striped border">
-    <tr class="table-secondary">
-        <th>
-            <label asp-for="Transactions.FirstOrDefault().Date"></label>
-        </th>
-        <th>
-            <label asp-for="People.FirstOrDefault().Name"></label>
-        </th>
-        <th>
-            <label asp-for="Transactions.FirstOrDefault().Amount"></label>
-        </th>
-    </tr>
-    @{
-        if (Model.Transactions.Count() > 0)
-        {
-            for (int i = 0; i < Model.Transactions.Count(); i++)
-            {
-                <tr>
-                    <td>
-                        <label>@Model.Transactions[i].Date</label>
-                    </td>
-                    <td>
-                        <label>@Model.People.FirstOrDefault(x => x.Id == Model.Transactions[i].PeopleFK).Name</label>
-                    </td>
-                    <td>
-                        <label>€@Model.Transactions[i].Amount</label>
-                    </td>
-                </tr>
-            }
-        }
-    }
-</table>
+    <div class="row">
+        <div class="col-12">
+            <table id="DataTable" class="table table-striped border w-100">
+            </table>
+        </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/js/data-table.js"></script>
+    <script src="~/js/transactions-listing-manager.js"></script>
+} 

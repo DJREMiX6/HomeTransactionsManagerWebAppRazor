@@ -1,0 +1,76 @@
+﻿@page
+@model HomeTransactionsManagerWebAppRazor.Pages.UpdateModel
+@{
+}
+
+<br />
+<br />
+<h2 class="text-info">Update Transaction</h2>
+<div class="container p-3 border">
+    <form method="post" class="col-12 container p-3">
+        @*Hidden Id*@
+        <div class="row">
+            <div class="col-4">
+                <input asp-for="Transaction.Id" hidden />
+            </div>
+        </div>
+
+        <br />
+
+        @*PeopleFK*@
+        <div class="row">
+            <div class="col-4">
+                <label asp-for="People.FirstOrDefault().Name"></label>
+            </div>
+            <div class="col-8">
+                <select class="form-control" asp-for="Transaction.PeopleFK">
+                    @{
+                        if (Model.People.Count() > 0)
+                        {
+                            foreach (var p in Model.People)
+                            {
+                                <option value="@p.Id">@p.Name</option>
+                            }
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <br />
+
+        @*Amount*@
+        <div class="row">
+            <div class="col-4">
+                <label asp-for="Transaction.Amount"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Transaction.Amount" class="form-control"/>
+            </div>
+        </div>
+
+        <br />
+
+        @*Date*@
+        <div class="row">
+            <div class="col-4">
+                <label asp-for="Transaction.Date"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Transaction.Date" class="form-control"/>
+            </div>
+        </div>
+
+        <br />
+
+        @*Buttons*@
+        <div class="row">
+            <div class=" offset-4 col-4">
+                <a asp-page="/Index" class="btn btn-danger w-100">Abort</a>
+            </div>
+            <div class="col-4">
+                <input type="submit" class="btn btn-success w-100" value="Submit" />
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,5 +1,26 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+.calendar-hascontent {
+    background-color: #76ff4f;
+    color: black;
+    cursor: pointer;
+}
+
+.calendar-enabled {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.calendar-disabled {
+    background-color: darkgray;
+    color: dimgray;
+    cursor: default;
+}
+
+.calendar-text {
+    font-size: 25px;
+}
 
 a.navbar-brand {
   white-space: normal;

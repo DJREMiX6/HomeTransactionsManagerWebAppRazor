@@ -12,50 +12,71 @@
             <a asp-page="/Index" class="btn btn-success w-100">Home</a>
         </div>
     </div>
-    <div class="row border m-0 p-3">
+    <div class="row border p-3">
         <div class="col-1 offset-1">
             <button class="btn btn-success w-100 rounded-lg" id="month-prev"><</button>
         </div>
         <div class="col-8 text-center">
-            <h5 class="text-light w-100" id="month-name">May</h5>
+            <h5 class="w-100" id="month-name"></h5>
         </div>
         <div class="col-1">
             <button class="btn btn-success w-100 rounded-lg" id="month-next">></button>
         </div>
     </div>
-    @*Calendar*@
-    <table class="table-bordered col-12" id="calendar-table">
-        <thead>
-            <tr>
-                <th>
-                    <label class="text-center w-100">Sunday</label>
-                </th>
-                <th>
-                    <label class="text-center w-100">Monday</label>
-                </th>
-                <th>
-                    <label class="text-center w-100">Tuesday</label>
-                </th>
-                <th>
-                    <label class="text-center w-100">Wednesday</label>
-                </th>
-                <th>
-                    <label class="text-center w-100">Thursday</label>
-                </th>
-                <th>
-                    <label class="text-center w-100">Friday</label>
-                </th>
-                <th>
-                    <label class="text-center w-100">Saturday</label>
-                </th>
-            </tr>
-        </thead>
-        <tbody id="calendar-body">
-
-        </tbody>
-    </table>
+    <div class="row">
+        @*Calendar*@
+        <table class="table-bordered col-12" id="calendar-table">
+            <thead>
+                <tr>
+                    <th>
+                        <label class="text-center w-100">Sun</label>
+                    </th>
+                    <th>
+                        <label class="text-center w-100">Mon</label>
+                    </th>
+                    <th>
+                        <label class="text-center w-100">Tue</label>
+                    </th>
+                    <th>
+                        <label class="text-center w-100">Wed</label>
+                    </th>
+                    <th>
+                        <label class="text-center w-100">Thu</label>
+                    </th>
+                    <th>
+                        <label class="text-center w-100">Fri</label>
+                    </th>
+                    <th>
+                        <label class="text-center w-100">Sat</label>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="calendar-body">
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-info">Totals</h2>
+        </div>
+    </div>
+    <div class="row border">
+        <div class="col-4"><h4 class="text-primary">Total spent</h4></div>
+        <div class="col-4"><h4>@Model.Transactions.Where(x => x.Amount < 0).Sum(x => x.Amount)</h4></div>
+    </div>
+    @*Foreach person create a row to see the total spent*@
+    @{ 
+        foreach (var e in Model.People.Where(x => x.Id != 10))
+        {
+        <div class="row border">
+            <div class="col-4"><h5 class="text-primary">Total spent by @e.Name</h5></div>
+            <div class="col-4"><h5>@Model.Transactions.Where(x => x.Amount < 0 && x.PeopleFK == e.Id).Sum(x => x.Amount)</h5></div>
+        </div>
+            }
+    }
 </div>
 
 @section Scripts{
+    <script src="~/js/get-parameters.js"></script>
     <script src="~/js/calendar.js"></script>
 }

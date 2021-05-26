@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HomeTransactionsManagerWebAppRazor.Models;
+using HomeTransactionsManagerWebAppRazor.ObjectModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,8 @@ namespace HomeTransactionsManagerWebAppRazor.Pages
         public async Task<IActionResult> OnGet()
         {
             People = await _db.People.ToListAsync();
+            Transaction = new Transaction();
+            Transaction.Date = DateTime2.Now.ToDateTime();
             return Page();
         }
 

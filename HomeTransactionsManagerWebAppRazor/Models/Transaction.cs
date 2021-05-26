@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace HomeTransactionsManagerWebAppRazor.Models
@@ -22,6 +23,7 @@ namespace HomeTransactionsManagerWebAppRazor.Models
         public int PeopleFK { get; set; }
 
         [Required]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Date { get; set; }
 
         //CTORS

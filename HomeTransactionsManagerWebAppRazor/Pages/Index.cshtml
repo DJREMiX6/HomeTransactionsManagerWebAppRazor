@@ -1,6 +1,7 @@
 ﻿@page
 @model HomeTransactionsManagerWebAppRazor.Pages.Index
-@{
+@section DeferScripts {
+    <script type="module" src="~/js/transactions-data-table-manager.js" defer></script>
 }
 
 <div class="container p-3">
@@ -28,7 +29,3 @@
     </div>
 </div>
 
-@section Scripts {
-    <script src="~/js/data-table.js"></script>
-    <script src="~/js/transactions-listing-manager.js"></script>
-} 

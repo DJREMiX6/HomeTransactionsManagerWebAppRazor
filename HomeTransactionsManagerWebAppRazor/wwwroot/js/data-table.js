@@ -1,4 +1,5 @@
-﻿//Custom JQuery function to create a dataTable
+﻿"use strict"
+//Custom JQuery function to create a dataTable
 $.fn.dataTable = function (options = {}) {
     /*
      * Access the element with "this"

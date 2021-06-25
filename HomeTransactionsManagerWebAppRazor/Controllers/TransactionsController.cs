@@ -35,17 +35,19 @@ namespace HomeTransactionsManagerWebAppRazor.Controllers
 
             if (!all)
             {
-                data = _db.Transactions.Join(_db.People, t => t.PeopleFK, p => p.Id, (t, p) => new TransactionPersonJoined()
+                data = null;
+                data = _db.Transactions.Where(x => x.Date.Month == month && x.Date.Year == year && x.Amount < 0)
+                    .Join(_db.People, t => t.PeopleFK, p => p.Id, (t, p) => new TransactionPersonJoined()
                 {
                     Id = t.Id,
                     Person = p.Name,
                     Amount = t.Amount,
                     Date = t.Date,
                     Day = t.Date.Day
-                }).Where(x => x.Date.Month == month && x.Date.Year == year && x.Amount < 0);
+                });
             }
 
-            return Json(new { data = await data.OrderByDescending(x => x.Date).ToListAsync() }, new JsonSerializerOptions()
+            return Json(new { Data = await data.OrderByDescending(x => x.Date).ToListAsync() }, new JsonSerializerOptions()
             {
                 PropertyNameCaseInsensitive = true
             });

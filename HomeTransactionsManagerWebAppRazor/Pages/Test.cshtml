@@ -1,26 +1,19 @@
 ﻿@page
 @model HomeTransactionsManagerWebAppRazor.Pages.TestModel
+@section DeferScripts {
+    <script type="module" src="~/js/calendar-manager.js" defer></script>
+}
 @{
 }
 
 <br />
 <br />
 
-<h2 class="text-warning">TEST AREA</h2>
+<h2 class="text-warning align-items-center">TEST AREA</h2>
 
 <br />
 <br />
 
-<div class="container" id="DataTableContainer">
-    <div class="row">
-        <div class="col-12">
-            <table id="DataTable" class="table table-striped border w-100">
-            </table>
-        </div>
-    </div>
+<div id="Calendar">
+    
 </div>
-
-@section Scripts {
-    <script src="~/js/data-table.js"></script>
-    <script src="~/js/transactions-listing-manager.js"></script>
-}

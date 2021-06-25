@@ -24,36 +24,41 @@
         </div>
     </div>
     <div class="row">
-        @*Calendar*@
-        <table class="table-bordered col-12" id="calendar-table">
-            <thead>
-                <tr>
-                    <th>
-                        <label class="text-center w-100">Sun</label>
-                    </th>
-                    <th>
-                        <label class="text-center w-100">Mon</label>
-                    </th>
-                    <th>
-                        <label class="text-center w-100">Tue</label>
-                    </th>
-                    <th>
-                        <label class="text-center w-100">Wed</label>
-                    </th>
-                    <th>
-                        <label class="text-center w-100">Thu</label>
-                    </th>
-                    <th>
-                        <label class="text-center w-100">Fri</label>
-                    </th>
-                    <th>
-                        <label class="text-center w-100">Sat</label>
-                    </th>
-                </tr>
-            </thead>
-            <tbody id="calendar-body">
-            </tbody>
-        </table>
+        <div id="CalendarContainer" class="col-12">
+
+        </div>
+        <!--
+          @*Calendar*@
+          <table class="table-bordered col-12" id="calendar-table">
+              <thead>
+                  <tr>
+                      <th>
+                          <label class="text-center w-100">Sun</label>
+                      </th>
+                      <th>
+                          <label class="text-center w-100">Mon</label>
+                      </th>
+                      <th>
+                          <label class="text-center w-100">Tue</label>
+                      </th>
+                      <th>
+                          <label class="text-center w-100">Wed</label>
+                      </th>
+                      <th>
+                          <label class="text-center w-100">Thu</label>
+                      </th>
+                      <th>
+                          <label class="text-center w-100">Fri</label>
+                      </th>
+                      <th>
+                          <label class="text-center w-100">Sat</label>
+                      </th>
+                  </tr>
+              </thead>
+              <tbody id="calendar-body">
+              </tbody>
+          </table>
+        */-->
     </div>
     <div class="row">
         <div class="col-12">
@@ -72,11 +77,11 @@
             <div class="col-4"><h5 class="text-primary">Total spent by @e.Name</h5></div>
             <div class="col-4"><h5>@Model.Transactions.Where(x => x.Amount < 0 && x.PeopleFK == e.Id).Sum(x => x.Amount)</h5></div>
         </div>
-            }
+        }
     }
 </div>
 
 @section Scripts{
     <script src="~/js/get-parameters.js"></script>
-    <script src="~/js/calendar.js"></script>
+    <script type="module" src="~/js/calendar.js"></script>
 }

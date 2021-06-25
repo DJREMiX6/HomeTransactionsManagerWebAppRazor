@@ -1,5 +1,49 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+.cursor-pointer {
+  cursor: pointer!important;
+}
+
+.vertical-align-text-center {
+    margin: 0!important;
+    padding-top: .5rem!important;
+}
+
+.square {
+    white-space: nowrap;
+    box-sizing: border-box;
+    white-space: nowrap;
+    box-sizing: border-box;
+    padding: 0;
+    text-align: center;
+    background-size: cover;
+}
+
+.square:before {    
+    padding-top: 100%;
+    white-space: normal;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+    content: '';
+    width: 0;
+}
+
+.calendar-container-big {
+  max-width: 1200px!important;
+  margin: 0 auto!important;
+}
+
+.calendar-container-medium {
+  max-width: 800px!important;
+  margin: 0 auto!important;
+}
+
+.calendar-container-small {
+  max-width: 500px!important;
+  margin: 0 auto!important;
+}
+
 .calendar-hascontent {
     background-color: #76ff4f;
     color: black;

@@ -1,4 +1,6 @@
-﻿const MONTHS = ["Jen", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+﻿"use strict"
+import { TRANSACTIONS_API_FULL_URL } from "./utils/urls.js";
+const MONTHS = ["Jen", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 var calendarBody;
 var nextMonthButton;
@@ -87,7 +89,7 @@ function generateCalendar() {
 }
 
 async function getMoneySpent(month, year, callback) {
-    let xmlhttp = new XMLHttpRequest();
+    /*let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             callback(this.responseText);
@@ -96,15 +98,22 @@ async function getMoneySpent(month, year, callback) {
         }
     };
     xmlhttp.open("GET", `/api/transactions?month=${month}&year=${year}`, true);
-    xmlhttp.send();
+    xmlhttp.send();*/
+    let url = TRANSACTIONS_API_FULL_URL + "?month=" + month + "&year=" + year;
+    console.log(url);
+    $.get(url, "json").done((data, status) => {
+        if(status == "success") {
+            callback(data);
+        }
+    })
 }
 
 async function loadMonthData(callback) {
     getMoneySpent(date.getMonth() + 1, date.getFullYear(), (response) => {
         if (response != null) {
-            monthData = JSON.parse(response);
+            monthData = response;
             monthData["data"].forEach(k => {
-                daysWithTransactions[k["day"]] = true;
+                daysWithTransactions[k["Day"]] = true;
             });
             callback();
         } else {
@@ -124,11 +133,11 @@ function dayClick(sender) {
     //Group and sum the outcomes of each people during the day
     let groupedData = {};
     monthData["data"].forEach(k => {
-        if (k["amount"] < 0 && k["day"] == date) {
-            if (groupedData[k["person"]] == undefined) {
-                groupedData[k["person"]] = k["amount"];
-            } else {
-                groupedData[k["person"]] += k["amount"];
+        if (k["Amount"] < 0 && k["Day"] == date) {
+            if (groupedData[k["Person"]] == undefined) {
+                groupedData[k["Person"]] = k["Amount"];
+            } else {           
+                groupedData[k["Person"]] += k["Amount"];
             }
         }
     });
@@ -172,5 +181,5 @@ function changeMonth(succession) {
     } else {
         date.setMonth(date.getMonth() - 1);
     }
-    window.location.replace("https://localhost:44398/TransactionsGraphicalVisualization?month=" + date.getMonth() + "&year=" + date.getFullYear());
+    location.replace("https://localhost:5001/TransactionsGraphicalVisualization?month=" + date.getMonth() + "&year=" + date.getFullYear());
 }

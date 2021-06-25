@@ -1,10 +1,11 @@
-﻿var dataTable;
+﻿"use strict"
+var dataTable;
 
 $(document).ready(() => {
     dataTable = $('#DataTable');
     dataTable.dataTable({
         "ajax": {
-            "url": ":44398/api/transactions",
+            "url": ":5001/api/transactions",
             "params": [
                 {
                     "name": "all",
@@ -18,7 +19,6 @@ $(document).ready(() => {
         "maxPageRows": 5,
 
         "pageNumber": 1,
-
         "columns": [
             { "data": "Date", "width": "25%" },
             { "data": "Person", "width": "25%" },

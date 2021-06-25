@@ -43,7 +43,7 @@ namespace HomeTransactionsManagerWebAppRazor
             else
             {
                 services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-                //OpenBrowser(Configuration.GetSection("NetworkEnvironment").GetSection("Production").GetSection("Urls").GetSection("Https").Value);
+                OpenBrowser(Configuration.GetSection("NetworkEnvironment").GetSection("Production").GetSection("Urls").GetSection("Https").Value);
             }
             services.AddControllersWithViews();
             services.AddSingleton<IConfiguration>(Configuration);

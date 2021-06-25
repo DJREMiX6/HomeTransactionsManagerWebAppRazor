@@ -26,7 +26,7 @@ namespace HomeTransactionsManagerWebAppRazor.Pages
         public async Task<IActionResult> OnGet(int month, int year)
         {
             if(month == 0 && year == 0)
-            {
+            {   
                 DateTime today = DateTime.Now;
                 month = today.Month;
                 year = today.Year;
